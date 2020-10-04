@@ -24,7 +24,7 @@ const App = () => {
     const { value: title } = bookTitleInput;
     const { value: author } = bookAuthorInput;
     const newBook: BookInterface = {
-      key: uuidv4(),
+      id: uuidv4(),
       title,
       author: author || undefined,
     };
@@ -36,7 +36,7 @@ const App = () => {
   return (
     <>
       {books.map((book) => (
-        <Book {...book} />
+        <Book key={book.id} {...book} />
       ))}
       <form onSubmit={handleSubmit}>
         <label htmlFor="bookTitle">

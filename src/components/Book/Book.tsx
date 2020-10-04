@@ -1,8 +1,9 @@
 import React, { ReactElement } from 'react';
+import { useLocalStorageState } from '../../hooks';
 import './Book.css';
 
 export interface BookInterface {
-  key: string;
+  id: string;
   title: string;
   author?: string;
   readOnceMsg?: string;
@@ -10,29 +11,35 @@ export interface BookInterface {
 }
 
 export const Book = ({
+  id,
   title,
   author = 'Unknown',
   readOnceMsg = 'No snarky message available.',
   readMultMsg = 'This will not change no matter how many times you click.',
 }: BookInterface): ReactElement => {
-  const [timesRead, setTimesRead] = React.useState((): number => {
-    console.log(
-      `Using lazy init for Book '${title}', ` +
-        'so this should only fire once, ' +
-        'but is firing twice for some reason.'
-    );
-    return 0;
+  const [timesRead, setTimesRead] = useLocalStorageState({
+    key: id,
+    defaultValue: String(0),
   });
 
-  const decrement = (): void => setTimesRead(timesRead - 1);
-  const increment = (): void => setTimesRead(timesRead + 1);
+  const decrement = (): void => setTimesRead(String(Number(timesRead) - 1));
+  const increment = (): void => setTimesRead(String(Number(timesRead) + 1));
+
+  const getMsg = (): string => {
+    const numTimesRead = Number(timesRead);
+    return numTimesRead > 1
+      ? readMultMsg
+      : numTimesRead === 1
+      ? readOnceMsg
+      : '';
+  };
 
   return (
     <div>
       <span className="underline">{title}</span> by {author}
       <button
         type="button"
-        disabled={!timesRead}
+        disabled={!Number(timesRead)}
         onClick={decrement}
         className="margin-sides"
       >
@@ -42,7 +49,7 @@ export const Book = ({
       <button type="button" onClick={increment} className="margin-sides">
         I read it
       </button>
-      {timesRead > 1 ? readMultMsg : timesRead === 1 ? readOnceMsg : ''}
+      {getMsg()}
     </div>
   );
 };
