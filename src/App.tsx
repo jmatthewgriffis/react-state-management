@@ -1,7 +1,13 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import './App.css';
 
-const Book = ({ title, author }: { title: string; author: string }) => (
+const Book = ({
+  title,
+  author,
+}: {
+  title: string;
+  author: string;
+}): ReactElement => (
   <div>
     {title} by {author}
   </div>
