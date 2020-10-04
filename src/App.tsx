@@ -4,13 +4,17 @@ import { Book } from './components';
 
 const App = () => (
   <>
-    <Book title="War and Peace" author="Leo Tolstoy" messageOne="Hmm, maybe." />
+    <Book
+      title="War and Peace"
+      author="Leo Tolstoy"
+      readOnceMsg="Hmm, maybe."
+    />
     <Book
       title="Slaughterhouse-Five"
       author="Kurt Vonnegut"
-      messageOne="In high school, probably."
+      readOnceMsg="In high school, probably."
     />
-    <Book title="My Amazing Novel" messageOne="Well, I should hope so." />
+    <Book title="My Amazing Novel" readOnceMsg="Well, I should hope so." />
   </>
 );
 

@@ -4,11 +4,11 @@ import './Book.css';
 export const Book = ({
   title,
   author = 'Unknown',
-  messageOne = '',
+  readOnceMsg = '',
 }: {
   title: string;
   author?: string;
-  messageOne: string;
+  readOnceMsg: string;
 }): ReactElement => {
   const [timesRead, setTimesRead] = React.useState((): number => {
     console.log(
@@ -28,7 +28,7 @@ export const Book = ({
       <button type="button" onClick={increment} className="margin-sides">
         I read it
       </button>
-      {timesRead > 0 ? messageOne : ''}
+      {timesRead > 0 ? readOnceMsg : ''}
     </div>
   );
 };
