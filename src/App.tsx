@@ -2,16 +2,16 @@ import React, { FormEvent } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import './App.css';
 import { BookInterface, Book } from './components';
+import { useLocalStorageState } from './hooks';
 import { initialBooksState } from './initialBooksState';
 
 const App = () => {
-  const [books, setBooks] = React.useState((): BookInterface[] => {
-    console.log(
-      'Using lazy init for App, so this should only fire once, ' +
-        'but is firing twice for some reason.'
-    );
-    return initialBooksState;
+  const [books, setBooks] = useLocalStorageState({
+    key: 'books',
+    defaultValue: JSON.stringify(initialBooksState),
   });
+
+  const getBooksArray = (): BookInterface[] => JSON.parse(books);
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
@@ -28,14 +28,14 @@ const App = () => {
       title,
       author: author || undefined,
     };
-    setBooks([...books, newBook]);
+    setBooks(JSON.stringify([...getBooksArray(), newBook]));
     bookTitleInput.value = '';
     bookAuthorInput.value = '';
   };
 
   return (
     <>
-      {books.map((book) => (
+      {getBooksArray().map((book) => (
         <Book key={book.id} {...book} />
       ))}
       <form onSubmit={handleSubmit}>
