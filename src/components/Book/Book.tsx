@@ -5,8 +5,8 @@ export interface BookInterface {
   key: string;
   title: string;
   author?: string;
-  readOnceMsg: string;
-  readMultMsg: string;
+  readOnceMsg?: string;
+  readMultMsg?: string;
 }
 
 export const Book = ({

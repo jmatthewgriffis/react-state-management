@@ -1,4 +1,5 @@
 import React, { FormEvent } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import './App.css';
 import { BookInterface, Book } from './components';
 import { initialBooksState } from './initialBooksState';
@@ -15,14 +16,21 @@ const App = () => {
   const handleSubmit = (event: FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
     // Not sure what is a better way to handle the typing here.
-    const {
-      bookTitle: { value: bookTitle },
-      bookAuthor: { value: bookAuthor },
-    } = (event.currentTarget.elements as unknown) as {
+    const { bookTitle: bookTitleInput, bookAuthor: bookAuthorInput } = (event
+      .currentTarget.elements as unknown) as {
       bookTitle: HTMLInputElement;
       bookAuthor: HTMLInputElement;
     };
-    console.log('title', bookTitle, 'author', bookAuthor);
+    const { value: title } = bookTitleInput;
+    const { value: author } = bookAuthorInput;
+    const newBook: BookInterface = {
+      key: uuidv4(),
+      title,
+      author: author || undefined,
+    };
+    setBooks([...books, newBook]);
+    bookTitleInput.value = '';
+    bookAuthorInput.value = '';
   };
 
   return (
