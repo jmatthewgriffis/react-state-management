@@ -2,6 +2,7 @@ import React, { ReactElement } from 'react';
 import './Book.css';
 
 export interface BookInterface {
+  key: string;
   title: string;
   author?: string;
   readOnceMsg: string;
