@@ -12,8 +12,8 @@ export interface BookInterface {
 export const Book = ({
   title,
   author = 'Unknown',
-  readOnceMsg = '',
-  readMultMsg = '',
+  readOnceMsg = 'No snarky message available.',
+  readMultMsg = 'This will not change no matter how many times you click.',
 }: BookInterface): ReactElement => {
   const [timesRead, setTimesRead] = React.useState((): number => {
     console.log(
