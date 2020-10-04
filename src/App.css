@@ -6,6 +6,12 @@ form input {
   margin: 0 5px;
 }
 
+form label span {
+  display: inline-block;
+  margin-left: 2px;
+  color: red;
+}
+
 .App {
   text-align: center;
 }

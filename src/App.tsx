@@ -31,7 +31,10 @@ const App = () => {
         <Book {...book} />
       ))}
       <form onSubmit={handleSubmit}>
-        <label htmlFor="bookTitle">Title</label>
+        <label htmlFor="bookTitle">
+          Title
+          <span>*</span>
+        </label>
         <input id="bookTitle" required />
         <label htmlFor="bookAuthor">Author</label>
         <input id="bookAuthor" />
