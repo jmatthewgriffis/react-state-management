@@ -17,7 +17,7 @@ export const useLocalStorageState = ({
   });
 
   React.useEffect((): void => {
-    console.log(`Saving LocalStorage key '${key}...`);
+    console.log(`Saving LocalStorage key '${key}'...`);
     window.localStorage.setItem(key, state);
   }, [key, state]);
 
