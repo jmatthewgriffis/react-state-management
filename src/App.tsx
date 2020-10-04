@@ -3,10 +3,10 @@ import './App.css';
 
 const Book = ({
   title,
-  author,
+  author = 'Unknown',
 }: {
   title: string;
-  author: string;
+  author?: string;
 }): ReactElement => (
   <div>
     {title} by {author}
@@ -17,6 +17,7 @@ const App = () => (
   <>
     <Book title="War and Peace" author="Leo Tolstoy" />
     <Book title="Slaughterhouse-Five" author="Kurt Vonnegut" />
+    <Book title="My Amazing Novel" />
   </>
 );
 
