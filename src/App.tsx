@@ -13,8 +13,6 @@ const Book = ({
   </div>
 );
 
-function App() {
-  return <Book title="War and Peace" author="Leo Tolstoy" />;
-}
+const App = () => <Book title="War and Peace" author="Leo Tolstoy" />;
 
 export default App;
