@@ -2,6 +2,6 @@
   text-decoration: underline;
 }
 
-.margin-left {
-  margin-left: 5px;
+.margin-sides {
+  margin: 0 5px;
 }
