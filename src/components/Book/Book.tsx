@@ -5,10 +5,12 @@ export const Book = ({
   title,
   author = 'Unknown',
   readOnceMsg = '',
+  readMultMsg = '',
 }: {
   title: string;
   author?: string;
   readOnceMsg: string;
+  readMultMsg: string;
 }): ReactElement => {
   const [timesRead, setTimesRead] = React.useState((): number => {
     console.log(
@@ -28,7 +30,7 @@ export const Book = ({
       <button type="button" onClick={increment} className="margin-sides">
         I read it
       </button>
-      {timesRead > 0 ? readOnceMsg : ''}
+      {timesRead > 1 ? readMultMsg : timesRead === 1 ? readOnceMsg : ''}
     </div>
   );
 };
