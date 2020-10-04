@@ -1,20 +1,22 @@
 import React, { ReactElement } from 'react';
 import './Book.css';
 
+export interface BookInterface {
+  title: string;
+  author?: string;
+  readOnceMsg: string;
+  readMultMsg: string;
+}
+
 export const Book = ({
   title,
   author = 'Unknown',
   readOnceMsg = '',
   readMultMsg = '',
-}: {
-  title: string;
-  author?: string;
-  readOnceMsg: string;
-  readMultMsg: string;
-}): ReactElement => {
+}: BookInterface): ReactElement => {
   const [timesRead, setTimesRead] = React.useState((): number => {
     console.log(
-      `Using lazy init for '${title}', ` +
+      `Using lazy init for Book '${title}', ` +
         'so this should only fire once, ' +
         'but is firing twice for some reason.'
     );
