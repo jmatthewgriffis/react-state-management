@@ -2,13 +2,9 @@ import React, { FormEvent } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import './App.css';
 import { BookInterface, Book } from './components';
+import { clearLocalStorageAndReload } from './functions';
 import { useLocalStorageState } from './hooks';
 import { initialBooksState } from './initialBooksState';
-
-const clearAndReload = (): void => {
-  window.localStorage.clear();
-  window.location.reload();
-};
 
 const App = () => {
   const [books, setBooks] = useLocalStorageState({
@@ -58,10 +54,10 @@ const App = () => {
       </span>
       <button
         type="button"
-        onClick={clearAndReload}
+        onClick={clearLocalStorageAndReload}
         style={{ margin: '0 5px' }}
       >
-        Clear local storage and reload
+        Reset to defaults
       </button>
     </>
   );
