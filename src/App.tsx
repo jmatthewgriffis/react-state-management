@@ -9,7 +9,7 @@ const Book = ({
   author?: string;
 }): ReactElement => (
   <div>
-    {title} by {author}
+    <span className="underline">{title}</span> by {author}
   </div>
 );
 
