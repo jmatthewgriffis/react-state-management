@@ -5,6 +5,11 @@ import { BookInterface, Book } from './components';
 import { useLocalStorageState } from './hooks';
 import { initialBooksState } from './initialBooksState';
 
+const clearAndReload = (): void => {
+  window.localStorage.clear();
+  window.location.reload();
+};
+
 const App = () => {
   const [books, setBooks] = useLocalStorageState({
     key: 'books',
@@ -48,6 +53,16 @@ const App = () => {
         <input id="bookAuthor" />
         <button type="submit">Add book</button>
       </form>
+      <span className="italic">
+        Data is saved to local storage and retained on reload.
+      </span>
+      <button
+        type="button"
+        onClick={clearAndReload}
+        style={{ margin: '0 5px' }}
+      >
+        Clear local storage and reload
+      </button>
     </>
   );
 };
