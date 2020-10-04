@@ -1,17 +1,6 @@
-import React, { ReactElement } from 'react';
+import React from 'react';
 import './App.css';
-
-const Book = ({
-  title,
-  author = 'Unknown',
-}: {
-  title: string;
-  author?: string;
-}): ReactElement => (
-  <div>
-    <span className="underline">{title}</span> by {author}
-  </div>
-);
+import { Book } from './components';
 
 const App = () => (
   <>
