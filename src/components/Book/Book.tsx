@@ -10,7 +10,9 @@ export const Book = ({
 }): ReactElement => {
   const [timesRead, setTimesRead] = React.useState((): number => {
     console.log(
-      `Using lazy init for '${title}', so this should only fire once.`
+      `Using lazy init for '${title}', ` +
+        'so this should only fire once, ' +
+        'but is firing twice for some reason.'
     );
     return 0;
   });
